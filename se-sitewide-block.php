@@ -15,6 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'SE_BLOCK_PATH', plugin_dir_path( __FILE__ ) );
 
+add_filter( 'plugin_row_meta', function ( $links, $file ) {
+    if ( plugin_basename( __FILE__ ) === $file ) {
+        $links[] = '<a href="https://github.com/humbabba/se-sitewide-blocks#readme">' . __( 'Docs', 'se-sitewide-block' ) . '</a>';
+    }
+    return $links;
+}, 10, 2 );
+
 /**
  * Available insertion locations.
  */
